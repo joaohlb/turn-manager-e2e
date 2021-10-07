@@ -14,7 +14,4 @@ def step_impl(context):
 
 @then('character form is "{display}"')
 def step_impl(context, display):
-    print(f'{display=}')
-    print((display == 'shown'))
-    print(context.browser.find_element_by_css_selector('form.char-form').is_displayed())
     assert (display == 'shown') is context.browser.find_element_by_css_selector('form.char-form').is_displayed()
