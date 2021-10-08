@@ -1,11 +1,12 @@
 from time import sleep
-from selenium.webdriver import Chrome, ChromeOptions
-
+from selenium.webdriver import Firefox, Chrome, ChromeOptions
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
 
 def before_all(context):
     options = ChromeOptions()
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    context.browser = Chrome(options=options)
+    context.browser = Chrome(executable_path=ChromeDriverManager().install(), options=options)
     context.browser.get('http://localhost:5555')
 
 

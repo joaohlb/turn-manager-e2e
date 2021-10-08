@@ -4,6 +4,16 @@ from pytest import mark
 
 class CharacterTests:
     
+    @mark.firefox
+    def test_firefox_character_button_shows_creation_form(self, firefox):
+        # setup
+        browser = firefox
+        browser.get('http://localhost:5555')
+        # action
+        browser.find_element_by_id('add-char').click()
+        # assertion
+        assert browser.find_element_by_css_selector('form.char-form').is_displayed()
+    
     @mark.ui
     def test_character_button_shows_creation_form(self, chrome):
         # setup
